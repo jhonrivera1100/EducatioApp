@@ -4,28 +4,23 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.jhon.educatioapp.R
+import android.widget.TextView
 
 class LoginActivity : AppCompatActivity() {
+    private lateinit var enlace_registro: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        // Aquí implementa tu lógica de inicio de sesión
-        // Por ejemplo, si el inicio de sesión es exitoso, navega a MainActivity
-        val loggedIn = checkIfLoggedIn() // Función ficticia para verificar si el usuario ya está conectado
+        // Inicializa tu TextView
+        enlace_registro = findViewById(R.id.enlace_registro)
 
-        if (loggedIn) {
-            val intent = Intent(this, MainActivity::class.java)
+        // Establece un listener de clics en tu TextView
+        enlace_registro.setOnClickListener {
+            // Inicia la actividad de registro de usuario
+            val intent = Intent(this, RegistroActivity::class.java)
             startActivity(intent)
-            finish() // Termina LoginActivity para que el usuario no pueda volver atrás
         }
-    }
-
-    private fun checkIfLoggedIn(): Boolean {
-        // Implementa tu lógica de inicio de sesión aquí
-        // Por ejemplo, verifica si el usuario ya está autenticado
-        // Si el usuario ya está autenticado, devuelve true, de lo contrario, devuelve false
-        return false
     }
 }

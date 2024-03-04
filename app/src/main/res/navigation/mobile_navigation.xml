@@ -22,4 +22,17 @@
         android:name="com.jhon.educatioapp.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+<activity
+    android:id="@+id/activity_registro"
+    android:name="com.jhon.educatioapp.controllers.RegistroActivity"
+    android:label="@string/registro"
+    tools:layout="@layout/activity_registro"
+/>
+    <activity
+        android:id="@+id/activity_login"
+        android:name="com.jhon.educatioapp.controllers.LoginActivity"
+        android:label="@string/login"
+        tools:layout="@layout/activity_login"
+        />
+
 </navigation>

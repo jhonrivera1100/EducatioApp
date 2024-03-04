@@ -12,27 +12,33 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.jhon.educatioapp.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/solicitar_clase"
+        android:name="com.jhon.educatioapp.fragments.SolicitarFragment"
+        android:label="@string/solicitar"
+        tools:layout="@layout/fragment_solicitar__clase" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.jhon.educatioapp.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-<activity
+        android:id="@+id/perfil_usuario"
+        android:name="com.jhon.educatioapp.fragments.PerfilUsuarioFragment"
+        android:label="@string/perfil_usuario"
+        tools:layout="@layout/fragment_perfil__usuario" />
+
+    <fragment
+        android:id="@+id/mis_clases"
+        android:name="com.jhon.educatioapp.fragments.MisClasesFragment"
+        android:label="@string/mis_clases"
+        tools:layout="@layout/fragment_mis_clases" />
+
+    <activity
     android:id="@+id/activity_registro"
     android:name="com.jhon.educatioapp.controllers.RegistroActivity"
     android:label="@string/registro"
-    tools:layout="@layout/activity_registro"
-/>
+    tools:layout="@layout/activity_registro" />
+
     <activity
         android:id="@+id/activity_login"
         android:name="com.jhon.educatioapp.controllers.LoginActivity"
         android:label="@string/login"
-        tools:layout="@layout/activity_login"
-        />
+        tools:layout="@layout/activity_login" />
 
 </navigation>

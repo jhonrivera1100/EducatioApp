@@ -7,9 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="cerrarsesion">Cerrar Sesion</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_home">Inicio</string>
     <string name="registro">Registro</string>
     <string name="login">Login</string>
     <string name="solicitar">Solicitar Clase</string>

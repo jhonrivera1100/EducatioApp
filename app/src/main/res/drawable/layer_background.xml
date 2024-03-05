@@ -14,6 +14,6 @@
     </item>
     <!-- Imagen superpuesta -->
     <item
-        android:drawable="@drawable/azul"
+        android:drawable="@drawable/azul2"
         android:gravity="center" /> <!-- Ajusta la gravedad según sea necesario -->
 </layer-list>

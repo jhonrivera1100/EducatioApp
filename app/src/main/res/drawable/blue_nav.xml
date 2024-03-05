@@ -7,4 +7,9 @@
         android:startColor="#98DFFF"
         android:centerColor="#2186F3"
         android:endColor="#0B32BD" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/layer_background"
+        android:scaleType="fitXY" />
 </shape>

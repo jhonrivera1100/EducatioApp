@@ -10,24 +10,40 @@
         android:name="com.jhon.educatioapp.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
-
+<!-- Navegacion Usuario -->
     <fragment
         android:id="@+id/solicitar_clase"
         android:name="com.jhon.educatioapp.fragments.SolicitarFragment"
         android:label="@string/solicitar"
         tools:layout="@layout/fragment_solicitar__clase" />
-
     <fragment
         android:id="@+id/perfil_usuario"
         android:name="com.jhon.educatioapp.fragments.PerfilUsuarioFragment"
         android:label="@string/perfil_usuario"
         tools:layout="@layout/fragment_perfil__usuario" />
-
     <fragment
         android:id="@+id/mis_clases"
         android:name="com.jhon.educatioapp.fragments.MisClasesFragment"
         android:label="@string/mis_clases"
         tools:layout="@layout/fragment_mis_clases" />
+    <!-- Navegacion Docente -->
+    <fragment
+        android:id="@+id/mis_clases_docente"
+        android:name="com.jhon.educatioapp.fragments.MisClasesDocente"
+        android:label="@string/mis_clases"
+        tools:layout="@layout/fragment_mis_clases_docente" />
+    <fragment
+        android:id="@+id/perfil_docente"
+        android:name="com.jhon.educatioapp.fragments.PerfilDocente"
+        android:label="@string/perfil_usuario"
+        tools:layout="@layout/fragment_perfil_docente" />
+    <fragment
+        android:id="@+id/postulacion_docente"
+        android:name="com.jhon.educatioapp.fragments.PostulacionDocente"
+        android:label="@string/postulacion"
+        tools:layout="@layout/fragment_postulacion_docente" />
+
+    <!--Navegacion Activitys Login y Registro-->
 
     <activity
     android:id="@+id/activity_registro"

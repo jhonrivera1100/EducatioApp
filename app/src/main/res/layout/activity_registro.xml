@@ -10,16 +10,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="270dp"
         android:background="@drawable/blue_nav"
         tools:ignore="MissingConstraints" >
 
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="100dp"
-            android:layout_height="91dp"
-            android:layout_weight="1"
-            android:src="@drawable/logopngblanco__2_" />
+            android:layout_width="match_parent"
+            android:layout_height="204dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/layer_background" />
     </LinearLayout>
 
     <RelativeLayout

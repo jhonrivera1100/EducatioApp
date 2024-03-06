@@ -22,4 +22,11 @@
     <style name="Theme.Educatioapp.AppBarOverlay" parent="ThemeOverlay.AppCompat.DayNight" />
 
     <style name="Theme.Educatioapp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Base.Theme.Listadosolicitud" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.Listadosolicitud" parent="Base.Theme.Listadosolicitud" />
 </resources>

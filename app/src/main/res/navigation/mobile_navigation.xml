@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/activity_home">
+    app:startDestination="@id/mis_clases">
 
     <activity
         android:id="@+id/activity_home"
@@ -12,9 +12,9 @@
         tools:layout="@layout/activity_home" />
 
     <!--Fragment de Inicio-->
-    <fragment
+    <activity
         android:id="@+id/inicio"
-        android:name="com.jhon.educatioapp.fragments.InicioFragment"
+        android:name="com.jhon.educatioapp.controllers.HomeActivity"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_inicio" />
 <!-- Navegacion Usuario -->
@@ -64,10 +64,5 @@
         android:label="@string/login"
         tools:layout="@layout/activity_login" />
 
-    <activity
-        android:id="@+id/activity_listado_clase"
-        android:name="com.jhon.educatioapp.controllers.ListadoClasesActivity"
-        android:label="@string/clase"
-        tools:layout="@layout/activity_listado_clase" />
 
 </navigation>

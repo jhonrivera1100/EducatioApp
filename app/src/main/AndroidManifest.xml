@@ -20,7 +20,7 @@
             android:theme="@style/Theme.Educatioapp" />
         <!-- LoginActivity como actividad de inicio -->
         <activity
-            android:name=".controllers.LoginActivity"
+            android:name=".controllers.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +28,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- MainActivity -->
-        <activity android:name=".controllers.MainActivity" />
     </application>
 
 </manifest>

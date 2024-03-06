@@ -12,11 +12,6 @@
         android:background="@drawable/blue_nav"
         tools:ignore="MissingConstraints" >
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="204dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/layer_background" />
     </LinearLayout>
 
     <RelativeLayout
@@ -88,9 +83,11 @@
 
                 <EditText
                     android:id="@+id/editTextTextEmailAddress"
-                    android:layout_width="322dp"
-                    android:layout_height="48dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="140dp"
+                    android:layout_marginEnd="16dp"
                     android:ems="10"
                     android:hint="Ingresa tu correo"
                     android:inputType="textEmailAddress"
@@ -101,9 +98,11 @@
 
                 <EditText
                     android:id="@+id/editTextNumberPassword"
-                    android:layout_width="322dp"
-                    android:layout_height="55dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="36dp"
+                    android:layout_marginEnd="16dp"
                     android:ems="10"
                     android:hint="Ingresa tu contraseña"
                     android:inputType="numberPassword"

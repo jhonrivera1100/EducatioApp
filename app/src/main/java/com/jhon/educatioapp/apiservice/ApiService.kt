@@ -1,4 +1,5 @@
 package com.jhon.educatioapp.apiservice
+import com.jhon.educatioapp.models.LoginData
 import com.jhon.educatioapp.models.UserData
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,15 +20,7 @@ interface ApiService {
     @POST("register")
     suspend fun insertarDatos(@Body userList: UserData): ResponseApi//void es para no esperar ninguna respuesta
 
-    /* @GET("https://bdeducatio.vercel.app/api/register")
-     suspend fun register(
-         // Aquí puedes agregar cualquier parámetro necesario para la solicitud de registro
-     ): RegisterRespuesta
- */
-
-    /* @GET("https://bdeducatio.vercel.app/api/login")
-     suspend fun login(
-         // Aquí puedes agregar cualquier parámetro necesario para la solicitud de inicio de sesión
-     ): LoginRespuesta
- */
+    //Interfaz de servicio para inicio de sesion
+    @POST("login")
+    suspend fun login(@Body loginData: LoginData): ResponseApi
 }

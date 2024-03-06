@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
@@ -8,6 +9,7 @@
             android:id="@+id/activity_home"
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_home" />
+
         <item
             android:id="@+id/solicitar_clase"
             android:icon="@drawable/ic_menu_gallery"
@@ -21,4 +23,11 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/mis_clases" />
     </group>
+    <!-- Elemento de menú para el botón "Ser Docente" -->
+    <item
+        android:id="@+id/ser_docente"
+        android:title="@string/btn_docente"
+        app:showAsAction="always" />
+
+
 </menu>

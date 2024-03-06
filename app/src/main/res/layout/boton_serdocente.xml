@@ -1,36 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <!-- Contenido principal -->
-
-    <!-- Agrega tus otros elementos aquí -->
-
-    <!-- LinearLayout al pie de la página -->
-    <LinearLayout
-        android:id="@+id/ll_footer"
+    <!-- Agrega tu botón aquí -->
+    <Button
+        android:id="@+id/btn_docente"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_alignParentBottom="true"
-        android:gravity="bottom"
-        android:padding="@dimen/activity_vertical_margin">
+        android:background="@color/principal"
+        android:text="Ser Docente"
+        android:textColor="#FFFFFF"
+        android:padding="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp" />
 
-        <!-- Contenido del LinearLayout -->
-        <Button
-            android:id="@+id/btn_docente"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="@color/principal"
-            android:padding="16dp"
-            android:text="Ser Docente"
-            android:textColor="#FFFFFF" />
-        <!-- Aquí puedes agregar más vistas si es necesario -->
-
-    </LinearLayout>
-
-</RelativeLayout>
+</LinearLayout>

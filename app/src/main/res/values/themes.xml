@@ -22,7 +22,7 @@
     <style name="Theme.Educatioapp.AppBarOverlay" parent="ThemeOverlay.AppCompat.DayNight" />
 
     <style name="Theme.Educatioapp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-<<<<<<< HEAD
+
     <style name="Base.Theme.Interfaz_principal2" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Personaliza tu tema base aquí si es necesario -->
     </style>
@@ -30,7 +30,7 @@
 
 
     <style name="Theme.Interfaz_principal2" parent="Base.Theme.Interfaz_principal2" />
-=======
+
 
     <style name="Base.Theme.Listadosolicitud" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your light theme here. -->
@@ -38,5 +38,5 @@
     </style>
 
     <style name="Theme.Listadosolicitud" parent="Base.Theme.Listadosolicitud" />
->>>>>>> 5c9189871b757fbb712a8d7a4e66fbe2991e269b
+
 </resources>

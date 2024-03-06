@@ -20,7 +20,7 @@
             android:theme="@style/Theme.Educatioapp" />
         <!-- LoginActivity como actividad de inicio -->
         <activity
-            android:name=".controllers.ListadoClasesActivity"
+            android:name=".controllers.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

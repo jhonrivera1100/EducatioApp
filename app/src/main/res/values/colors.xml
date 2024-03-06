@@ -8,6 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="principal">#1AA7F6</color>
+<<<<<<< HEAD
     <color name="Azul">#1AA7F6</color>
     <color name="Gris">#2626BF</color>
+=======
+    <color name="blue">#1DADEF</color>
+>>>>>>> 5c9189871b757fbb712a8d7a4e66fbe2991e269b
 </resources>

@@ -11,12 +11,6 @@
         android:label="inicio"
         tools:layout="@layout/activity_home" />
 
-    <!--Fragment de Inicio-->
-    <activity
-        android:id="@+id/inicio"
-        android:name="com.jhon.educatioapp.controllers.HomeActivity"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_inicio" />
 <!-- Navegacion Usuario -->
     <fragment
         android:id="@+id/solicitar_clase"

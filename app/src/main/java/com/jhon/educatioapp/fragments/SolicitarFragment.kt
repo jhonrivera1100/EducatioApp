@@ -5,32 +5,25 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.ArrayAdapter
+import android.widget.DatePicker
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.jhon.educatioapp.R
+import com.jhon.educatioapp.databinding.FragmentSolicitarClaseBinding
 import java.util.*
 
 class SolicitarFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private val db = FirebaseFirestore.getInstance()
+    private lateinit var binding: FragmentSolicitarClaseBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val rootView = inflater.inflate(R.layout.fragment_solicitar__clase, container, false)
-
-        val textEmail = rootView.findViewById<EditText>(R.id.editTextEmail)
-        val textPassword = rootView.findViewById<EditText>(R.id.editTextPassword)
-        val spinnerMaterias: Spinner = rootView.findViewById(R.id.spinnerMaterias)
-        val temaEditText = rootView.findViewById<EditText>(R.id.editTextTema)
-        val fechaDatePicker = rootView.findViewById<DatePicker>(R.id.datePickerFecha)
-        val horaEditText = rootView.findViewById<EditText>(R.id.editTextHora)
-        val botonGuardar = rootView.findViewById<Button>(R.id.buttonGuardar)
-        val spinnerModalidad: Spinner = rootView.findViewById(R.id.spinnerModalidad)
+    ): View {
+        binding = FragmentSolicitarClaseBinding.inflate(inflater, container, false)
 
         // Inicializar Firebase Authentication
         auth = FirebaseAuth.getInstance()
@@ -43,7 +36,7 @@ class SolicitarFragment : Fragment() {
         adapterModalidad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         // Establecer el adaptador en el Spinner de modalidad
-        spinnerModalidad.adapter = adapterModalidad
+        binding.spinnerModalidad.adapter = adapterModalidad
 
         // Definir las materias de bachillerato
         val materias = arrayOf("Matemáticas", "Física", "Química", "Biología", "Historia", "Geografía", "Literatura", "Inglés", "Economía")
@@ -53,18 +46,20 @@ class SolicitarFragment : Fragment() {
         adapterMaterias.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         // Establecer el adaptador en el Spinner de materias
-        spinnerMaterias.adapter = adapterMaterias
+        binding.spinnerMaterias.adapter = adapterMaterias
 
-        botonGuardar.setOnClickListener {
-            val materia = spinnerMaterias.selectedItem.toString()
-            val tema = temaEditText.text.toString()
-            val modalidad = spinnerModalidad.selectedItem.toString()
-            val fecha = getDateFromDatePicker(fechaDatePicker)
-            val hora = horaEditText.text.toString()
+        binding.buttonGuardar.setOnClickListener {
+
+            val valorClase = binding.editTextValorClase.text.toString()
+            val materia = binding.spinnerMaterias.selectedItem.toString()
+            val tema = binding.editTextTema.text.toString()
+            val modalidades = binding.spinnerModalidad.selectedItem.toString()
+            val fecha = getDateFromDatePicker(binding.datePickerFecha)
+            val hora = binding.editTextHora.text.toString()
 
             // Obtener el correo electrónico y la contraseña ingresados por el usuario
-            val email = textEmail.text.toString()
-            val password = textPassword.text.toString()
+            val email = binding.editTextEmail.text.toString()
+            val password = binding.editTextPassword.text.toString()
 
             // Autenticar al usuario con correo electrónico y contraseña
             auth.signInWithEmailAndPassword(email, password)
@@ -72,23 +67,24 @@ class SolicitarFragment : Fragment() {
                     if (task.isSuccessful) {
                         Log.d(TAG, "signInWithEmail:success")
                         // Una vez autenticado el usuario, guardar los datos en Firestore
-                        guardarDatosEnFirestore(materia, tema, fecha, hora, modalidad)
+                        guardarDatosEnFirestore(materia, tema, fecha, hora, modalidades, valorClase)
                     } else {
                         Log.w(TAG, "signInWithEmail:failure", task.exception)
                     }
                 }
         }
 
-        return rootView
+        return binding.root
     }
 
-    private fun guardarDatosEnFirestore(materia: String, tema: String, fecha: Date, hora: String, modalidad: String) {
+    private fun guardarDatosEnFirestore(materia: String, tema: String, fecha: Date, hora: String, modalidad: String, valorClase: String) {
         val clase = hashMapOf(
             "materia" to materia,
             "tema" to tema,
             "fecha" to fecha,
             "hora" to hora,
-            "modalidad" to modalidad
+            "modalidad" to modalidad,
+            "valorClase" to valorClase
         )
 
         // Intenta agregar un documento a la colección "clases"

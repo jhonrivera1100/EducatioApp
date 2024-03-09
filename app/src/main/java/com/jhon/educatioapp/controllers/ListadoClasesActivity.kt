@@ -1,6 +1,5 @@
 package com.jhon.educatioapp.controllers
 
-import ClaseAdapter
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +9,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.jhon.educatioapp.databinding.ActivityListadoClasesBinding
 import com.jhon.educatioapp.models.Clase
+import com.jhon.educatioapp.adapters.ClaseAdapter
 
 class ListadoClasesActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListadoClasesBinding
@@ -49,6 +49,7 @@ class ListadoClasesActivity : AppCompatActivity() {
             .addSnapshotListener { snapshot, error ->
                 if (error != null) {
                     // Manejar el error
+                    Log.e(TAG, "Error al obtener los datos de Firestore", error)
                     return@addSnapshotListener
                 }
 
@@ -61,6 +62,7 @@ class ListadoClasesActivity : AppCompatActivity() {
                         }
                     }
                     claseAdapter.updateData(clasesList)
+                    claseAdapter.setItems(clasesList)
                 }
             }
     }

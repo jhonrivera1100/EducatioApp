@@ -1,20 +1,26 @@
-package com.jhon.educatioapp.controllers
+package com.jhon.educatioapp.fragments
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.jhon.educatioapp.R
 import com.jhon.educatioapp.adapters.HomeViewPagerAdapter
 import com.jhon.educatioapp.models.ArticuloHome
 
-class HomeActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+class HomeFragment : Fragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        val viewPager: ViewPager = findViewById(R.id.viewPager)
-        val btnVer = findViewById<Button>(R.id.btnVer) // Encuentra la referencia del botón
+        val viewPager: ViewPager = view.findViewById(R.id.viewPager)
+        val btnVer = view.findViewById<Button>(R.id.btnVer) // Encuentra la referencia del botón
 
         val articulos = ArrayList<ArticuloHome>()
 
@@ -24,7 +30,7 @@ class HomeActivity : AppCompatActivity() {
         articulos.add(ArticuloHome("Modalidad Virtual o Presencial", "Ofrecemos opciones flexibles de clases virtuales y presenciales para adaptarnos al estilo de vida de cada estudiante. Las clases virtuales brindan conveniencia, mientras que las presenciales ofrecen una experiencia más interactiva.", R.drawable.tres))
         articulos.add(ArticuloHome("Contraoferta", "En nuestra plataforma, los estudiantes tienen la libertad de publicar sus requisitos de clase y recibir múltiples ofertas de instructores. Esta modalidad única permite a los estudiantes comparar precios, ubicaciones y condiciones de enseñanza antes de comprometerse.", R.drawable.cuatro))
 
-        val adapter = HomeViewPagerAdapter(this, articulos)
+        val adapter = HomeViewPagerAdapter(requireContext(), articulos)
         viewPager.adapter = adapter
 
         // Configura el OnClickListener para el botón
@@ -35,5 +41,7 @@ class HomeActivity : AppCompatActivity() {
                 viewPager.currentItem = nextPage
             }
         }
+
+        return view
     }
 }

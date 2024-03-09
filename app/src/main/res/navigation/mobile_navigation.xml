@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/mis_clases">
+    app:startDestination="@id/perfil_usuario">
 
-    <activity
-        android:id="@+id/activity_home"
-        android:name="com.jhon.educatioapp.controllers.HomeActivity"
-        android:label="inicio"
-        tools:layout="@layout/activity_home" />
 
 <!-- Navegacion Usuario -->
+    <fragment
+        android:id="@+id/Home_Fragment"
+        android:name="com.jhon.educatioapp.fragments.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/solicitar_clase"
         android:name="com.jhon.educatioapp.fragments.SolicitarFragment"

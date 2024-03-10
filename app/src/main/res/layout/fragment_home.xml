@@ -5,18 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.HomeFragment"
-  >
-
-<androidx.viewpager.widget.ViewPager
-    android:id="@+id/viewPager"
-    android:foregroundGravity="center"
-     android:overScrollMode="never"
-    android:clipToPadding="false"
-
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     >
-</androidx.viewpager.widget.ViewPager>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:foregroundGravity="center"
+        android:overScrollMode="never"
+        android:clipToPadding="false"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    </androidx.viewpager.widget.ViewPager>
     <Button
         android:id="@+id/btnVer"
         android:text="siguiente"

@@ -37,7 +37,8 @@ class HomeFragment : Fragment() {
         btnVer.setOnClickListener {
             // Cambia a la siguiente página en el ViewPager
             val nextPage = viewPager.currentItem + 1
-            if (nextPage < adapter.count) {
+            if (nextPage < adapter.getCount()) {
+
                 viewPager.currentItem = nextPage
             }
         }

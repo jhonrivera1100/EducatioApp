@@ -6,21 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".fragments.SolicitarFragment">
 
-    <LinearLayout
-        android:layout_width="510dp"
-        android:layout_height="180dp"
-        android:background="@drawable/blue_nav"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints" >
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/layer_background" />
-    </LinearLayout>
     <RelativeLayout
         android:layout_width="337dp"
         android:layout_height="600dp"
@@ -49,98 +34,298 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+               <TextView
+                   android:layout_width="180dp"
+                   android:layout_height="wrap_content"
+                   android:text="Correo electronico:"
+                   android:textColor="@color/Azul"
+                   android:layout_marginStart="16dp"
+                   android:textSize="16sp"
+                   android:fontFamily="serif"
+                   android:textStyle="bold" >
 
-                <EditText
-                    android:id="@+id/editTextEmail"
+               </TextView>
+
+                <!-- Primer EditText -->
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Correo electrónico"
-                    android:inputType="textEmailAddress"
-                    android:layout_margin="16dp"/>
+                    android:layout_height="50dp"
+                    android:layout_margin="16dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#A4C4FB">
 
+                    <EditText
+                        android:id="@+id/editTextEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Correo electrónico"
+                        android:inputType="textEmailAddress"
+                        android:layout_margin="7dp"></EditText>
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="end|top"
+                        android:src="@drawable/correo"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="8dp"/>
+
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:text="Contraseña:"
+                    android:textColor="@color/Azul"
+                    android:layout_marginStart="16dp"
+                    android:textSize="16sp"
+                    android:fontFamily="serif"
+                    android:textStyle="bold" >
+
+
+                </TextView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="16dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#DFEAF8">
                 <EditText
                     android:id="@+id/editTextPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Contraseña"
+                    android:hint="contraseña"
                     android:inputType="textPassword"
-                    android:layout_margin="16dp"/>
+                    android:layout_margin="7dp"/>
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="end|top"
+                        android:src="@drawable/candado"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="8dp"></ImageView>
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:text="Materia:"
+                    android:textColor="@color/Azul"
+                    android:layout_marginStart="16dp"
+                    android:textSize="16sp"
+                    android:fontFamily="serif"
+                    android:textStyle="bold" >
 
+                </TextView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="16dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#A4C4FB">
                 <Spinner
                     android:id="@+id/spinnerMaterias"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Selecciona la Materia"
-                    android:layout_margin="16dp"/>
+                    android:layout_margin="7dp"/>
 
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:text="Tema:"
+                    android:textColor="@color/Azul"
+                    android:layout_marginStart="16dp"
+                    android:textSize="16sp"
+                    android:fontFamily="serif"
+                    android:textStyle="bold" >
+
+                </TextView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="16dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#DFEAF8">
                 <EditText
                     android:id="@+id/editTextTema"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Tema"
                     android:inputType="text"
-                    android:layout_margin="16dp"/>
+                    android:layout_margin="7dp"/>
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="end|top"
+                        android:src="@drawable/tema"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="8dp"></ImageView>
+                </androidx.cardview.widget.CardView>
 
-                <DatePicker
-                    android:id="@+id/datePickerFecha"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="180dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"/>
+                    android:text="Fecha:"
+                    android:textColor="@color/Azul"
+                    android:layout_marginStart="16dp"
+                    android:textSize="16sp"
+                    android:fontFamily="serif"
+                    android:textStyle="bold" >
 
+                </TextView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="310dp"
+                    android:layout_margin="16dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#DFEAF8">
+
+                    <DatePicker
+                        android:id="@+id/datePickerFecha"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"/>
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:text="Hora:"
+                    android:textColor="@color/Azul"
+                    android:layout_marginStart="16dp"
+                    android:textSize="16sp"
+                    android:fontFamily="serif"
+                    android:textStyle="bold" >
+
+                </TextView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="16dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#A4C4FB">
                 <EditText
                     android:id="@+id/editTextHora"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Hora"
                     android:inputType="time"
-                    android:layout_margin="16dp"/>
+                    android:layout_margin="7dp"/>
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="end|top"
+                        android:src="@drawable/reloj"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="8dp"></ImageView>
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:text="Valor de la Clase:"
+                    android:textColor="@color/Azul"
+                    android:layout_marginStart="16dp"
+                    android:textSize="16sp"
+                    android:fontFamily="serif"
+                    android:textStyle="bold" >
 
+                </TextView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="16dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#DFEAF8">
                 <EditText
                     android:id="@+id/editTextValorClase"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Valor de la clase"
+                    android:hint="Valor "
                     android:inputType="number"
-                    android:layout_margin="16dp"/>
+                    android:layout_margin="7dp"/>
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="end|top"
+                        android:src="@drawable/valor"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="8dp"></ImageView>
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:text="Modalidad :"
+                    android:textColor="@color/Azul"
+                    android:layout_marginStart="16dp"
+                    android:textSize="16sp"
+                    android:fontFamily="serif"
+                    android:textStyle="bold" >
 
+                </TextView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="16dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#A4C4FB">
                 <Spinner
                     android:id="@+id/spinnerModalidad"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Modalidad"
-                    android:layout_margin="16dp"/>
+                    android:layout_margin="7dp"/>
+                </androidx.cardview.widget.CardView>
 
                 <Button
                     android:id="@+id/buttonGuardar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
                     android:text="Guardar"
-                    android:layout_margin="16dp"/>
+                    android:layout_marginLeft="65dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="50dp"
+                    android:backgroundTint="@color/principal"/>
 
                 <Button
                     android:id="@+id/buttonActualizar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:backgroundTint="@color/principal"
                     android:text="Actualizar"
-                    android:layout_margin="16dp"/>
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="65dp"
+                    android:layout_below="@id/buttonGuardar"
+                    android:layout_marginTop="20dp"
+              />
             </LinearLayout>
         </ScrollView>
         <TextView
             android:id="@+id/textView"
             android:layout_width="399dp"
             android:layout_height="80dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
             android:layout_marginStart="94dp"
             android:layout_marginEnd="68dp"
-
             android:fontFamily="serif"
             android:text="Solicitar Clase"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/Azul"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
+
 
     </RelativeLayout>
 

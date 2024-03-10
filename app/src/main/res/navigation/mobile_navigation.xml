@@ -30,7 +30,7 @@
     <!-- Navegacion Docente -->
     <fragment
         android:id="@+id/mis_clases_docente"
-        android:name="com.jhon.educatioapp.fragments.MisClasesDocente"
+        android:name="com.jhon.educatioapp.fragments.MisClasesDocenteFragment"
         android:label="@string/mis_clases"
         tools:layout="@layout/fragment_mis_clases_docente" />
     <fragment

@@ -4,14 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
-import com.jhon.educatioapp.R
+import com.jhon.educatioapp.databinding.ItemHomeBinding
 import com.jhon.educatioapp.models.ArticuloHome
 
 class HomeViewPagerAdapter(private val context: Context, private val model: ArrayList<ArticuloHome>) : PagerAdapter() {
-    private val layoutInflater: LayoutInflater = LayoutInflater.from(context)
 
     override fun getCount(): Int {
         return model.size
@@ -22,20 +19,17 @@ class HomeViewPagerAdapter(private val context: Context, private val model: Arra
     }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val view = layoutInflater.inflate(R.layout.item_home, container, false)
-
-        val nombresTextView = view.findViewById<TextView>(R.id.nombres)
-        val descripcionTextView = view.findViewById<TextView>(R.id.descripcion)
-        val imagenImageView = view.findViewById<ImageView>(R.id.imagen)
-
+        val inflater = LayoutInflater.from(context)
+        val binding = ItemHomeBinding.inflate(inflater, container, false)
         val currentItem = model[position]
 
-        nombresTextView.text = currentItem.nombres
-        descripcionTextView.text = currentItem.descripcion
-        imagenImageView.setImageResource(currentItem.imagenid)
+        // Vincular datos al diseño utilizando View Binding
+        binding.nombres.text = currentItem.nombres
+        binding.descripcion.text = currentItem.descripcion
+        binding.imagen.setImageResource(currentItem.imagenid)
 
-        container.addView(view)
-        return view
+        container.addView(binding.root)
+        return binding.root
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {

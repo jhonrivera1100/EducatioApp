@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -117,7 +118,16 @@ class MisClasesDocenteFragment : Fragment() {
             private val textViewHora: TextView = itemView.findViewById(R.id.textViewHora)
             private val textViewModalidad: TextView = itemView.findViewById(R.id.textViewModalidad)
             private val textViewValorClase: TextView = itemView.findViewById(R.id.textViewValorClase)
+            private val btnAccept: Button = itemView.findViewById(R.id.btnAccept)
 
+            init {
+                // Agregar OnClickListener al botón de aceptar en la inicialización del ViewHolder
+                btnAccept.setOnClickListener {
+                    // Mostrar mensaje de clase aceptada con éxito
+                    Toast.makeText(itemView.context, "Clase aceptada con éxito", Toast.LENGTH_SHORT).show()
+                    // Aquí puedes agregar cualquier otra tarea que desees ejecutar al hacer clic en el botón
+                }
+            }
             fun bind(clase: Clase) {
                 // Asignar valores a las vistas
                 textViewMateria.text = clase.materia

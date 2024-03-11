@@ -1,15 +1,18 @@
 package com.jhon.educatioapp.fragments
 
+import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.DatePicker
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.jhon.educatioapp.R
 import com.jhon.educatioapp.databinding.FragmentSolicitarClaseBinding
 import java.util.*
 
@@ -73,6 +76,9 @@ class SolicitarFragment : Fragment() {
                     }
                 }
         }
+        binding.buttonGuardar.setOnClickListener {
+            mostrarPopupSolicitudExitosa()
+        }
 
         return binding.root
     }
@@ -92,6 +98,7 @@ class SolicitarFragment : Fragment() {
             .add(clase)
             .addOnSuccessListener { documentReference ->
                 Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                mostrarPopupSolicitudExitosa()
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
@@ -108,6 +115,18 @@ class SolicitarFragment : Fragment() {
         calendar.set(year, month, day)
         return calendar.time
     }
+    private fun mostrarPopupSolicitudExitosa() {
+        val dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.popup_solicitar)
+
+        val buttonOK = dialog.findViewById<Button>(R.id.buttonOK)
+        buttonOK.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
 
     companion object {
         private const val TAG = "SolicitarFragment"

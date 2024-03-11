@@ -1,5 +1,6 @@
 package com.jhon.educatioapp.fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -121,13 +122,22 @@ class MisClasesDocenteFragment : Fragment() {
             private val btnAccept: Button = itemView.findViewById(R.id.btnAccept)
 
             init {
-                // Agregar OnClickListener al botón de aceptar en la inicialización del ViewHolder
                 btnAccept.setOnClickListener {
-                    // Mostrar mensaje de clase aceptada con éxito
-                    Toast.makeText(itemView.context, "Clase aceptada con éxito", Toast.LENGTH_SHORT).show()
-                    // Aquí puedes agregar cualquier otra tarea que desees ejecutar al hacer clic en el botón
+                    val dialogView = LayoutInflater.from(itemView.context).inflate(R.layout.popup_postular, null)
+                    val builder = AlertDialog.Builder(itemView.context)
+                        .setView(dialogView)
+                        .setCancelable(false)
+
+                    val dialog = builder.create()
+                    dialog.show()
+
+                    val btnOK = dialogView.findViewById<Button>(R.id.buttonOK)
+                    btnOK.setOnClickListener {
+                        dialog.dismiss()
+                    }
                 }
             }
+
             fun bind(clase: Clase) {
                 // Asignar valores a las vistas
                 textViewMateria.text = clase.materia

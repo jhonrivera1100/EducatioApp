@@ -1,14 +1,13 @@
 package com.jhon.educatioapp.controllers
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.jhon.educatioapp.R
 import android.widget.TextView
-import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
 import com.jhon.educatioapp.apiservice.ApiClient
 import com.jhon.educatioapp.apiservice.ApiManager
 import com.jhon.educatioapp.databinding.ActivityLoginBinding
@@ -16,7 +15,6 @@ import com.jhon.educatioapp.databinding.ActivityRegistroBinding
 import com.jhon.educatioapp.models.LoginData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlin.math.log
 
 class LoginActivity : AppCompatActivity() {
 
@@ -28,6 +26,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_login)
 
         // Data binding
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -72,6 +71,10 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(
                     this@LoginActivity, "Datos insertados correctamente", Toast.LENGTH_SHORT
                 ).show()
+
+                // Manejar el inicio de sesión exitoso y navegar al fragmento deseado
+                handleSuccessfulLogin()
+
             } catch (e: Exception) {
                 // Manejar errores y mostrar un mensaje de error en la aplicación
                 Log.e(TAG, "Error al procesar la solicitud POST: ${e.message}")
@@ -80,5 +83,19 @@ class LoginActivity : AppCompatActivity() {
                 ).show()
             }
         }
+    }
+
+    // Función para manejar el inicio de sesión exitoso y navegar a MainActivity
+    private fun handleSuccessfulLogin() {
+        // Crear un Intent para iniciar MainActivity
+        val intent = Intent(this, MainActivity::class.java)
+        // Iniciar MainActivity
+        startActivity(intent)
+        // Finalizar LoginActivity para que no se pueda volver atrás
+        finish()
+    }
+
+    companion object {
+        const val TAG = "LoginActivity"
     }
 }

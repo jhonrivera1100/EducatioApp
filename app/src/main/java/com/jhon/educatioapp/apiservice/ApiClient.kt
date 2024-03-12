@@ -16,4 +16,8 @@ class ApiClient {
             return retrofit.create(ApiService::class.java)
         }
     }
+    data class CambiarRolResponse(
+        val message: String,
+        val rol: String
+    )
 }

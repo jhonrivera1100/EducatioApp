@@ -6,7 +6,7 @@
     <solid android:color="@color/principal" /> <!-- Puedes cambiar el color a tu gusto -->
 
     <!-- Círculos de diseño -->
-    <corners android:radius="16dp" /> <!-- Ajusta el valor para cambiar el radio de los círculos -->
+    <corners android:bottomRightRadius="24dp" android:bottomLeftRadius="24dp" /> <!-- Ajusta el valor para cambiar el radio de los círculos -->
     <padding
         android:left="8dp"
         android:top="8dp"

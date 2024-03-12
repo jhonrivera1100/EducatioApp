@@ -34,8 +34,10 @@ class MainActivity : AppCompatActivity() {
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
+        // Configurar el menú según el tipo de usuario
+        configurarMenu(navView.menu, obtenerTipoUsuario())
+
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.Home_Fragment, R.id.solicitar_clase, R.id.mis_clases, R.id.perfil_usuario
@@ -43,6 +45,20 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        // Detectar clics en los ítems del menú
+        navView.setNavigationItemSelectedListener { menuItem ->
+            // Realizar la lógica de cambio de opciones según el ítem del menú seleccionado
+            when (menuItem.itemId) {
+                R.id.ser_docente -> {
+                    // Cambiar a las opciones del tipo de usuario 1 (docente)
+                    // Por ejemplo, navegar a un fragmento específico
+                    navController.navigate(R.id.ser_docente)
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -54,5 +70,23 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    // Función para obtener el tipo de usuario
+    private fun obtenerTipoUsuario(): Int {
+        // Aquí implementa la lógica para obtener el tipo de usuario
+        // Por ejemplo, puedes obtenerlo desde una base de datos, SharedPreferences, etc.
+        // Por ahora, como ejemplo, se retorna un valor estático
+        return 0 // Cambia este valor según tus necesidades
+    }
+
+    // Función para configurar el menú según el tipo de usuario
+    private fun configurarMenu(menu: Menu, tipoUsuario: Int) {
+        menu.findItem(R.id.solicitar_clase)?.isVisible = (tipoUsuario == 0)
+        menu.findItem(R.id.postulacion_docente)?.isVisible = (tipoUsuario == 1)
+        menu.findItem(R.id.mis_clases)?.isVisible = (tipoUsuario == 0)
+        menu.findItem(R.id.mis_clases_docente)?.isVisible = (tipoUsuario == 1)
+        menu.findItem(R.id.perfil_usuario)?.isVisible = (tipoUsuario == 0)
+        menu.findItem(R.id.perfil_docente)?.isVisible = (tipoUsuario == 1)
     }
 }

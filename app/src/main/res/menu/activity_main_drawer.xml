@@ -5,6 +5,7 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+
         <item
             android:id="@+id/Home_Fragment"
             android:icon="@drawable/ic_menu_camera"
@@ -22,6 +23,19 @@
             android:id="@+id/mis_clases"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/mis_clases" />
+        <item
+            android:id="@+id/postulacion_docente"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/postulacion" />
+        <item
+            android:id="@+id/mis_clases_docente"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/mis_clases" />
+        <item
+            android:id="@+id/perfil_docente"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/perfil_usuario"
+            />
     </group>
     <!-- Elemento de menú para el botón "Ser Docente" -->
     <item

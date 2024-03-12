@@ -14,11 +14,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.jhon.educatioapp.R
 import com.jhon.educatioapp.databinding.FragmentSolicitarClaseBinding
-import java.util.*
+import java.util.Calendar
+import java.util.Date
 
 class SolicitarFragment : Fragment() {
 
-    private lateinit var auth: FirebaseAuth
     private val db = FirebaseFirestore.getInstance()
     private lateinit var binding: FragmentSolicitarClaseBinding
 
@@ -28,8 +28,12 @@ class SolicitarFragment : Fragment() {
     ): View {
         binding = FragmentSolicitarClaseBinding.inflate(inflater, container, false)
 
-        // Inicializar Firebase Authentication
-        auth = FirebaseAuth.getInstance()
+        // Obtener el correo electrónico del usuario actualmente autenticado
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        val email = currentUser?.email
+
+        // Mostrar el correo electrónico en el TextView
+        binding.editTextEmail.setText(email)
 
         //Definir modalidades
         val modalidad = arrayOf("Virtual", "Presencial")
@@ -60,31 +64,19 @@ class SolicitarFragment : Fragment() {
             val fecha = getDateFromDatePicker(binding.datePickerFecha)
             val hora = binding.editTextHora.text.toString()
 
-            // Obtener el correo electrónico y la contraseña ingresados por el usuario
+            // Obtener el correo electrónico
             val email = binding.editTextEmail.text.toString()
-            val password = binding.editTextPassword.text.toString()
 
-            // Autenticar al usuario con correo electrónico y contraseña
-            auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(requireActivity()) { task ->
-                    if (task.isSuccessful) {
-                        Log.d(TAG, "signInWithEmail:success")
-                        // Una vez autenticado el usuario, guardar los datos en Firestore
-                        guardarDatosEnFirestore(materia, tema, fecha, hora, modalidades, valorClase)
-                    } else {
-                        Log.w(TAG, "signInWithEmail:failure", task.exception)
-                    }
-                }
-        }
-        binding.buttonGuardar.setOnClickListener {
+            guardarDatosEnFirestore(email, materia, tema, fecha, hora, modalidades, valorClase)
             mostrarPopupSolicitudExitosa()
         }
 
         return binding.root
     }
 
-    private fun guardarDatosEnFirestore(materia: String, tema: String, fecha: Date, hora: String, modalidad: String, valorClase: String) {
+    private fun guardarDatosEnFirestore(email: String, materia: String, tema: String, fecha: Date, hora: String, modalidad: String, valorClase: String) {
         val clase = hashMapOf(
+            "email" to email,
             "materia" to materia,
             "tema" to tema,
             "fecha" to fecha,
@@ -98,7 +90,6 @@ class SolicitarFragment : Fragment() {
             .add(clase)
             .addOnSuccessListener { documentReference ->
                 Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-                mostrarPopupSolicitudExitosa()
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
@@ -126,7 +117,6 @@ class SolicitarFragment : Fragment() {
 
         dialog.show()
     }
-
 
     companion object {
         private const val TAG = "SolicitarFragment"

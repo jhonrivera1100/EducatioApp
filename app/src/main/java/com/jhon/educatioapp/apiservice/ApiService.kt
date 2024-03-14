@@ -1,12 +1,12 @@
 package com.jhon.educatioapp.apiservice
 import com.jhon.educatioapp.models.LoginData
 import com.jhon.educatioapp.models.UserData
-import retrofit2.Callback
-import retrofit2.Response
 import retrofit2.http.Body
-import retrofit2.http.GET
 import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.Call
+import retrofit2.http.Header
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.Field
 
 // Paso 2: Interfaz de Servicio
 interface ApiService {
@@ -23,4 +23,12 @@ interface ApiService {
     //Interfaz de servicio para inicio de sesion
     @POST("login")
     suspend fun login(@Body loginData: LoginData): ResponseApi
+
+    // cambio de rol
+    @FormUrlEncoded
+    @POST("/usuario/cambiar-rol")
+    fun cambiarRol(
+        @Header("Authorization") token: String,
+        @Field("rol") nuevoRol: String
+    ): Call<ApiClient.CambiarRolResponse>
 }

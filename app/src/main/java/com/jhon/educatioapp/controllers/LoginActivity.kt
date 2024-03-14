@@ -3,18 +3,14 @@ package com.jhon.educatioapp.controllers
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
+import com.google.firebase.auth.FirebaseAuth
 import com.jhon.educatioapp.R
-import android.widget.TextView
 import com.jhon.educatioapp.apiservice.ApiClient
 import com.jhon.educatioapp.apiservice.ApiManager
 import com.jhon.educatioapp.databinding.ActivityLoginBinding
-import com.jhon.educatioapp.databinding.ActivityRegistroBinding
-import com.jhon.educatioapp.models.LoginData
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
 
@@ -45,44 +41,42 @@ class LoginActivity : AppCompatActivity() {
 
         // Configurar el botón de enviar datos del login
         binding.bottonInicioDeSesion.setOnClickListener {
-            // Llamamos la función para insertar datos
-            insertarLogin()
+            // Llamamos la función para iniciar sesión
+            iniciarSesion()
         }
     }
 
-    // Función para enviar datos al servidor
-    private fun insertarLogin() {
-        // Obtener los datos insertados del formulario login
+    // Función para iniciar sesión
+    private fun iniciarSesion() {
+        // Obtener los datos insertados del formulario de inicio de sesión
         val emailInicio = binding.editTextTextEmailAddress.text.toString()
         val passIncio = binding.editTextNumberPassword.text.toString()
 
-        // Crear una instancia de LoginData con los datos insertados en el formulario
-        val data = LoginData(email = emailInicio, password = passIncio)
+        // Iniciar sesión en Firebase Authentication
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(emailInicio, passIncio)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Inicio de sesión exitoso
+                    Log.d(TAG, "Inicio de sesión en Firebase exitoso para el correo: $emailInicio")
 
-        // Llamar a la función iniciarSesion en ApiManager de forma asincrónica con lifecycleScope
-        lifecycleScope.launch(Dispatchers.Main) {
-            try {
-                // Enviar los datos al servidor
-                val result = apiManager.iniciarSesion(data)
-                Log.e(TAG, "$result")
-                Log.i(TAG, "Solicitud POST exitosa: Datos insertados correctamente")
+                    // Mostrar mensaje de éxito en la aplicación
+                    Toast.makeText(
+                        this@LoginActivity, "Inicio de sesión exitoso", Toast.LENGTH_SHORT
+                    ).show()
 
-                // Mostrar un mensaje de éxito en la aplicación
-                Toast.makeText(
-                    this@LoginActivity, "Datos insertados correctamente", Toast.LENGTH_SHORT
-                ).show()
+                    // Manejar el inicio de sesión exitoso y navegar al fragmento deseado
+                    handleSuccessfulLogin()
+                } else {
+                    // Error en el inicio de sesión
+                    Log.e(TAG, "Error en el inicio de sesión en Firebase: ${task.exception?.message}")
 
-                // Manejar el inicio de sesión exitoso y navegar al fragmento deseado
-                handleSuccessfulLogin()
-
-            } catch (e: Exception) {
-                // Manejar errores y mostrar un mensaje de error en la aplicación
-                Log.e(TAG, "Error al procesar la solicitud POST: ${e.message}")
-                Toast.makeText(
-                    this@LoginActivity, "Error al insertar datos: ${e.message}", Toast.LENGTH_SHORT
-                ).show()
+                    // Mostrar mensaje de error en la aplicación
+                    Toast.makeText(
+                        this@LoginActivity, "Error en el inicio de sesión: ${task.exception?.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
-        }
     }
 
     // Función para manejar el inicio de sesión exitoso y navegar a MainActivity

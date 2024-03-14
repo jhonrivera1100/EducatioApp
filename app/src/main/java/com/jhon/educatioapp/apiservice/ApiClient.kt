@@ -16,8 +16,18 @@ class ApiClient {
             return retrofit.create(ApiService::class.java)
         }
     }
+    //Respuesta de Rol
     data class CambiarRolResponse(
         val message: String,
         val rol: String
+    )
+    // Respuestas de registro y login
+    data class LoginResponse(
+        val message:ArrayList<String>,
+        val token: String?
+    )
+
+    data class ResponseApi(
+        val message: ArrayList<String>
     )
 }

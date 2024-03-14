@@ -22,7 +22,7 @@ interface ApiService {
 
     //Interfaz de servicio para inicio de sesion
     @POST("login")
-    suspend fun login(@Body loginData: LoginData): ResponseApi
+    fun login(@Body loginData: LoginData): Call<ApiClient.LoginResponse>
 
     // cambio de rol
     @FormUrlEncoded

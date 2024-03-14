@@ -1,5 +1,6 @@
 package com.jhon.educatioapp.controllers
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -11,18 +12,21 @@ import com.jhon.educatioapp.R
 import com.jhon.educatioapp.apiservice.ApiClient
 import com.jhon.educatioapp.apiservice.ApiManager
 import com.jhon.educatioapp.databinding.ActivityLoginBinding
+import com.jhon.educatioapp.models.LoginData
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var apiManager: ApiManager
-
     // Data binding
     private lateinit var binding: ActivityLoginBinding
     private lateinit var enlace_registro: TextView
+    //private var userToken: String = "123"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
 
         // Data binding
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -41,55 +45,76 @@ class LoginActivity : AppCompatActivity() {
 
         // Configurar el botón de enviar datos del login
         binding.bottonInicioDeSesion.setOnClickListener {
-            // Llamamos la función para iniciar sesión
-            iniciarSesion()
+
+            // Obtener los datos insertados del formulario login
+            val emailInicio = binding.editTextTextEmailAddress.text.toString()
+            val passIncio = binding.editTextNumberPassword.text.toString()
+            //val token = userToken
+
+            // Llamamos la función para insertar datos
+            insertarLogin(emailInicio, passIncio)
         }
+
+        /*  // Realizar la transición al HomeFragment
+          //val fragmentManager: FragmentManager = supportFragmentManager
+          val fragmentTransaction = fragmentManager.beginTransaction()
+          fragmentTransaction.replace(R.id.fragment_container, HomeFragment())
+          fragmentTransaction.commit()*/
     }
 
-    // Función para iniciar sesión
-    private fun iniciarSesion() {
-        // Obtener los datos insertados del formulario de inicio de sesión
-        val emailInicio = binding.editTextTextEmailAddress.text.toString()
-        val passIncio = binding.editTextNumberPassword.text.toString()
+    // Función para enviar datos al servidor
+    private fun insertarLogin(emailInicio: String, passIncio: String) {
 
-        // Iniciar sesión en Firebase Authentication
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(emailInicio, passIncio)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Inicio de sesión exitoso
-                    Log.d(TAG, "Inicio de sesión en Firebase exitoso para el correo: $emailInicio")
+        // Crear una instancia de LoginData con los datos insertados en el formulario
+        val data = LoginData(emailInicio, passIncio, "")
 
-                    // Mostrar mensaje de éxito en la aplicación
+        // Llamar a la función iniciarSesion en ApiManager de forma asincrónica con lifecycleScope
+        apiManager.iniciarSesion(data, object : Callback<ApiClient.LoginResponse> {
+            override fun onResponse(
+                call: Call<ApiClient.LoginResponse>,
+                response: Response<ApiClient.LoginResponse>
+            ) { // Enviar los datos al servidor
+
+                if (response.isSuccessful) {
+                    // Si la respuesta es exitosa
+                    val result = response.body()
+
+                    // Obtener el token de la respuesta del backend
+                    val token = result?.token
+
+                    // Guardar el token en SharedPreferences
+                    val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+                    val editor = sharedPreferences.edit()
+                    editor.putString("token", token)
+                    editor.apply()
+
                     Toast.makeText(
-                        this@LoginActivity, "Inicio de sesión exitoso", Toast.LENGTH_SHORT
+                        this@LoginActivity,
+                        "Datos insertados correctamente: $result",
+                        Toast.LENGTH_SHORT
                     ).show()
 
-                    // Manejar el inicio de sesión exitoso y navegar al fragmento deseado
-                    handleSuccessfulLogin()
+                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                    startActivity(intent)
+                    //finish() // Finalizar LoginActivity para que no se pueda volver atrás
                 } else {
-                    // Error en el inicio de sesión
-                    Log.e(TAG, "Error en el inicio de sesión en Firebase: ${task.exception?.message}")
-
-                    // Mostrar mensaje de error en la aplicación
+                    // Si la respuesta no es exitosa
                     Toast.makeText(
-                        this@LoginActivity, "Error en el inicio de sesión: ${task.exception?.message}",
+                        this@LoginActivity,
+                        "Error al iniciar sesión: ${response.message()}",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
             }
-    }
 
-    // Función para manejar el inicio de sesión exitoso y navegar a MainActivity
-    private fun handleSuccessfulLogin() {
-        // Crear un Intent para iniciar MainActivity
-        val intent = Intent(this, MainActivity::class.java)
-        // Iniciar MainActivity
-        startActivity(intent)
-        // Finalizar LoginActivity para que no se pueda volver atrás
-        finish()
-    }
-
-    companion object {
-        const val TAG = "LoginActivity"
+            override fun onFailure(call: Call<ApiClient.LoginResponse>, t: Throwable) {
+                // Error al realizar la llamada (p.ej., sin conexión)
+                Toast.makeText(
+                    this@LoginActivity,
+                    "Error al iniciar sesión: ${t.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        })
     }
 }

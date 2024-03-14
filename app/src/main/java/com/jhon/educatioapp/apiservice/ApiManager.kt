@@ -3,6 +3,7 @@ import android.util.Log
 import com.jhon.educatioapp.models.UserData
 import com.jhon.educatioapp.models.DefaultResponse
 import com.jhon.educatioapp.models.LoginData
+import retrofit2.Callback
 import retrofit2.Response
 
 // Paso 3: Manager de API
@@ -12,16 +13,9 @@ import retrofit2.Response
 class ApiManager(private val apiService: ApiService) {
 
     // Función para realizar la solicitud de inicio de sesión
-    suspend fun iniciarSesion(loginData: LoginData): ApiService.ResponseApi? {
-        return try {
-            // Realizar la solicitud de inicio de sesión utilizando el servicio API
-            val response = apiService.login(loginData)
-            Log.e("TAG", "de: ${response} ", )
-            // Retornar la respuesta obtenida
-            response
-        } catch (e: Exception) {
-            null
-        }
+    fun iniciarSesion(userlogin: LoginData , callback: Callback<ApiClient.LoginResponse>){
+        // Llamada a la API usando Retrofit con un callback
+        apiService.login(userlogin).enqueue(callback)
     }
 
     // Función para realizar la solicitud de registro de usuario

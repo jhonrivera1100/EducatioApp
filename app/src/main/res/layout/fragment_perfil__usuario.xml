@@ -8,75 +8,98 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="259dp"
-        android:background="@drawable/blue_nav">
+        android:layout_width="415dp"
+        android:layout_height="230dp"
+        android:background="@drawable/blue_nav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="80dp">
 
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="157dp"
-            android:layout_height="138dp"
+            android:id="@+id/imageView"
+            android:layout_width="177dp"
+            android:layout_height="124dp"
+            android:layout_marginTop="40dp"
             android:src="@drawable/perfil"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="172dp"
             android:hint="Nombre Completo"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageView2" />
-
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/correo_perfil"
-        android:layout_width="337dp"
-        android:layout_height="68dp"
-        android:layout_marginTop="36dp"
-        android:drawableStart="@drawable/carta"
-        android:drawablePadding="20dp"
-        android:hint="Correo Electrónico"
-        android:paddingStart="20dp"
-        android:textAlignment="viewStart"
+        android:id="@+id/appCompatButton"
+        android:layout_width="375dp"
+        android:layout_height="67dp"
+        android:hint="Correo Electronico"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/constraintLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/perfil_back"
+        android:drawableStart="@drawable/carta">
+
+    </androidx.appcompat.widget.AppCompatButton>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/ciudad_perfil"
-        android:layout_width="337dp"
-        android:layout_height="68dp"
-        android:layout_marginTop="24dp"
-        android:drawableStart="@drawable/carta"
-        android:drawablePadding="20dp"
+        android:id="@+id/appCompatButton3"
+        android:layout_width="375dp"
+        android:layout_height="67dp"
+        android:hint="Telefono"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.606"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatButton2"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/perfil_back"
+        android:drawableStart="@drawable/telefono">
+
+    </androidx.appcompat.widget.AppCompatButton>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/appCompatButton2"
+        android:layout_width="375dp"
+        android:layout_height="67dp"
         android:hint="Ciudad"
-        android:paddingStart="20dp"
-        android:textAlignment="viewStart"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.606"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/correo_perfil" />
+        app:layout_constraintTop_toBottomOf="@+id/appCompatButton"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/perfil_back"
+        android:drawableStart="@drawable/edificio">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/telefono"
-        android:layout_width="337dp"
-        android:layout_height="68dp"
-        android:layout_marginTop="24dp"
-        android:drawableStart="@drawable/carta"
-        android:drawablePadding="20dp"
-        android:hint="Teléfono"
-        android:paddingStart="20dp"
-        android:textAlignment="viewStart"
+    </androidx.appcompat.widget.AppCompatButton>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="guardar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ciudad_perfil" />
-
+        app:layout_constraintTop_toBottomOf="@+id/appCompatButton3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
-

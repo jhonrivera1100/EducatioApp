@@ -1,5 +1,4 @@
 package com.jhon.educatioapp.controllers
-
 import android.os.Bundle
 import android.view.Menu
 import com.google.android.material.snackbar.Snackbar
@@ -31,7 +30,6 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
-
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
@@ -41,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.Home_Fragment, R.id.solicitar_clase, R.id.mis_clases, R.id.perfil_usuario
+                R.id.Home_Fragment, R.id.solicitar_clase, R.id.mis_clases, R.id.perfil_usuario, R.id.postulacion_docente, R.id.mis_clases_docente, R.id.perfil_docente
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -54,9 +52,53 @@ class MainActivity : AppCompatActivity() {
                 R.id.ser_docente -> {
                     // Cambiar a las opciones del tipo de usuario 1 (docente)
                     // Por ejemplo, navegar a un fragmento específico
-                    navController.navigate(R.id.ser_docente)
+                    navController.navigate(R.id.Home_Fragment)
+                    configurarMenu(navView.menu, 1) // Actualizar el menú
                     true
                 }
+                R.id.mis_clases_docente -> {
+                    // Navegar al fragmento de "mis_clases"
+                    navController.navigate(R.id.mis_clases_docente)
+                    true
+                }
+                R.id.perfil_docente -> {
+                    // Navegar al fragmento de "mis_clases"
+                    navController.navigate(R.id.perfil_docente)
+                    true
+                }
+                R.id.postulacion_docente -> {
+                    // Navegar al fragmento de "mis_clases"
+                    navController.navigate(R.id.postulacion_docente)
+                    true
+                }
+                R.id.Home_Fragment -> {
+                    // Navegar al fragmento de "mis_clases"
+                    navController.navigate(R.id.Home_Fragment)
+                    true
+                }
+                R.id.ser_estudiante -> {
+                    // Cambiar a las opciones del tipo de usuario 0 (estudiante)
+                    // Por ejemplo, navegar a un fragmento específico
+                    navController.navigate(R.id.Home_Fragment)
+                    configurarMenu(navView.menu, 0) // Actualizar el menú
+                    true
+                }
+                R.id.solicitar_clase -> {
+                    // Navegar al fragmento de "solicitar_clase"
+                    navController.navigate(R.id.solicitar_clase)
+                    true
+                }
+                R.id.mis_clases -> {
+                    // Navegar al fragmento de "mis_clases"
+                    navController.navigate(R.id.mis_clases)
+                    true
+                }
+                R.id.perfil_usuario -> {
+                    // Navegar al fragmento de "perfil_usuario"
+                    navController.navigate(R.id.perfil_usuario)
+                    true
+                }
+                // Agregar más casos según sea necesario para otros items del menú
                 else -> false
             }
         }
@@ -83,6 +125,8 @@ class MainActivity : AppCompatActivity() {
 
     // Función para configurar el menú según el tipo de usuario
     private fun configurarMenu(menu: Menu, tipoUsuario: Int) {
+        menu.findItem(R.id.ser_docente)?.isVisible = (tipoUsuario == 0)
+        menu.findItem(R.id.ser_estudiante)?.isVisible = (tipoUsuario == 1)
         menu.findItem(R.id.solicitar_clase)?.isVisible = (tipoUsuario == 0)
         menu.findItem(R.id.postulacion_docente)?.isVisible = (tipoUsuario == 1)
         menu.findItem(R.id.mis_clases)?.isVisible = (tipoUsuario == 0)

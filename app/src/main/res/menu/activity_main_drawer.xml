@@ -36,12 +36,17 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/perfil_usuario"
             />
+        <item
+            android:id="@+id/ser_docente"
+            android:title="@string/btn_docente"
+            app:showAsAction="always" />
+        <item
+            android:id="@+id/ser_estudiante"
+            android:title="@string/btn_estudiante"
+            app:showAsAction="always" />
     </group>
     <!-- Elemento de menú para el botón "Ser Docente" -->
-    <item
-        android:id="@+id/ser_docente"
-        android:title="@string/btn_docente"
-        app:showAsAction="always" />
+
 
 
 </menu>

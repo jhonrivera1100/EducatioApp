@@ -19,12 +19,12 @@
             android:label="@string/title_activity_registro"
             android:theme="@style/Theme.Educatioapp" />
         <activity
-            android:name=".controllers.MainActivity"
+            android:name=".controllers.LoginActivity"
             android:exported="true">
         </activity>
         <!-- LoginActivity como actividad de inicio -->
         <activity
-            android:name=".controllers.LoginActivity"
+            android:name=".controllers.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

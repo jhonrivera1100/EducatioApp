@@ -39,6 +39,18 @@ class RegistroActivity : AppCompatActivity() {
     private fun registrarUsuario() {
         val email = binding.email.text.toString()
         val contrasena = binding.contrasena.text.toString()
+        val confirmarContrasena = binding.confirmarContrasena.text.toString()
+
+        // Validación de confirmación de contraseña
+        if (contrasena != confirmarContrasena) {
+            // Mostrar un mensaje de error al usuario
+            Toast.makeText(
+                this@RegistroActivity,
+                "Las contraseñas no coinciden",
+                Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
 
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, contrasena)
             .addOnCompleteListener(this) { task ->

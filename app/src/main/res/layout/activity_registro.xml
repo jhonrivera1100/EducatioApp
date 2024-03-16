@@ -241,6 +241,23 @@
                     app:layout_constraintTop_toBottomOf="@+id/fechaN"
                     app:layout_constraintVertical_bias="1.0"
                     tools:ignore="MissingConstraints" />
+                <TextView
+                    android:id="@+id/textViewConfirmar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:backgroundTint="#3F51B5"
+                    android:text="Confirmar contraseña"
+                    android:textColor="@color/principal"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/confirmarContrasena"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.17"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fechaN"
+                    app:layout_constraintVertical_bias="1.0"
+                    tools:ignore="MissingConstraints" />
 
                 <EditText
                     android:id="@+id/ciudad"
@@ -270,6 +287,19 @@
                     app:layout_constraintHorizontal_bias="0.494"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+                <EditText
+                    android:id="@+id/confirmarContrasena"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="24dp"
+                    android:ems="10"
+                    android:hint="Confirmar Contraseña"
+                    android:inputType="textPassword"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.494"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/contrasena" />
 
                 <Button
                     android:id="@+id/botonRegistro"
@@ -282,7 +312,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/contrasena" />
+                    app:layout_constraintTop_toBottomOf="@+id/confirmarContrasena" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

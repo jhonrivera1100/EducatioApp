@@ -28,23 +28,23 @@
             android:layout_alignParentBottom="true"
             android:layout_marginTop="69dp"
             android:layout_marginBottom="41dp"
-            android:elevation="10dp">>
+            android:elevation="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-               <TextView
-                   android:layout_width="180dp"
-                   android:layout_height="wrap_content"
-                   android:text="Correo electronico:"
-                   android:textColor="@color/Azul"
-                   android:layout_marginStart="16dp"
-                   android:textSize="16sp"
-                   android:fontFamily="serif"
-                   android:textStyle="bold" >
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:text="Correo electronico:"
+                    android:textColor="@color/Azul"
+                    android:layout_marginStart="16dp"
+                    android:textSize="16sp"
+                    android:fontFamily="serif"
+                    android:textStyle="bold" >
 
-               </TextView>
+                </TextView>
 
                 <!-- Primer EditText -->
                 <androidx.cardview.widget.CardView
@@ -53,7 +53,15 @@
                     android:layout_margin="16dp"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="4dp"
-                    app:cardBackgroundColor="#A4C4FB">
+                    >
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="start|center_vertical"
+                        android:src="@drawable/correo"
+                        android:layout_marginStart="8dp"
+
+                        />
 
                     <TextView
                         android:id="@+id/editTextEmail"
@@ -61,14 +69,10 @@
                         android:layout_height="wrap_content"
                         android:hint="Correo electrónico"
                         android:inputType="textEmailAddress"
-                        android:layout_margin="7dp"></TextView>
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="end|top"
-                        android:src="@drawable/correo"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginTop="8dp"/>
+                        android:layout_marginStart="39dp"
+                        android:layout_marginTop="13dp"
+                        ></TextView>
+
 
                 </androidx.cardview.widget.CardView>
 
@@ -84,21 +88,23 @@
                     android:textStyle="bold" >
 
                 </TextView>
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_margin="16dp"
                     app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp"
-                    app:cardBackgroundColor="#A4C4FB">
-                <Spinner
-                    android:id="@+id/spinnerMaterias"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Selecciona la Materia"
-                    android:layout_margin="7dp"/>
+                    app:cardElevation="4dp">
+
+                    <Spinner
+                        android:id="@+id/spinnerMaterias"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="7dp"
+                        android:hint="Selecciona la Materia" />
 
                 </androidx.cardview.widget.CardView>
+
                 <TextView
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
@@ -117,21 +123,24 @@
                     android:layout_margin="16dp"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="4dp"
-                    app:cardBackgroundColor="#DFEAF8">
-                <EditText
-                    android:id="@+id/editTextTema"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Tema"
-                    android:inputType="text"
-                    android:layout_margin="7dp"/>
+                    >
+                    <EditText
+                        android:id="@+id/editTextTema"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Tema"
+                        android:inputType="text"
+                        android:layout_marginStart="32dp"
+                        android:backgroundTint="@color/linea"/>
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="end|top"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="start|center_vertical"
                         android:src="@drawable/tema"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginTop="8dp"></ImageView>
+                        android:layout_marginStart="9dp"
+                        android:layout_marginTop="-3dp"
+
+                        ></ImageView>
                 </androidx.cardview.widget.CardView>
 
                 <TextView
@@ -151,7 +160,7 @@
                     android:layout_margin="16dp"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="4dp"
-                    app:cardBackgroundColor="#DFEAF8">
+                    >
 
                     <DatePicker
                         android:id="@+id/datePickerFecha"
@@ -165,7 +174,7 @@
                 <TextView
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
-                    android:text="Hora:"
+                    android:text="Hora inicio:"
                     android:textColor="@color/Azul"
                     android:layout_marginStart="16dp"
                     android:textSize="16sp"
@@ -179,21 +188,57 @@
                     android:layout_margin="16dp"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="4dp"
-                    app:cardBackgroundColor="#A4C4FB">
-                <EditText
-                    android:id="@+id/editTextHora"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Hora"
-                    android:inputType="time"
-                    android:layout_margin="7dp"/>
+                    >
+                    <EditText
+                        android:id="@+id/editTextHora"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Hora inicio"
+                        android:inputType="time"
+                        android:layout_marginStart="32dp"
+                        android:backgroundTint="@color/linea"/>
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="end|top"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="start|center_vertical"
                         android:src="@drawable/reloj"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginTop="8dp"></ImageView>
+                        android:layout_marginStart="9dp"
+                        android:layout_marginTop="-3dp"></ImageView>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:text="Hora Fin:"
+                    android:textColor="@color/Azul"
+                    android:layout_marginStart="16dp"
+                    android:textSize="16sp"
+                    android:fontFamily="serif"
+                    android:textStyle="bold" >
+
+                </TextView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="16dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp"
+                    >
+                    <EditText
+                        android:id="@+id/editTextHorafin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Hora Fin"
+                        android:inputType="time"
+                        android:layout_marginStart="32dp"
+                        android:backgroundTint="@color/linea"/>
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="start|center_vertical"
+                        android:src="@drawable/reloj"
+                        android:layout_marginStart="9dp"
+                        android:layout_marginTop="-3dp"></ImageView>
                 </androidx.cardview.widget.CardView>
                 <TextView
                     android:layout_width="180dp"
@@ -212,21 +257,22 @@
                     android:layout_margin="16dp"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="4dp"
-                    app:cardBackgroundColor="#DFEAF8">
-                <EditText
-                    android:id="@+id/editTextValorClase"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Valor "
-                    android:inputType="number"
-                    android:layout_margin="7dp"/>
+                    >
+                    <EditText
+                        android:id="@+id/editTextValorClase"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Valor "
+                        android:inputType="number"
+                        android:layout_marginStart="32dp"
+                        android:backgroundTint="@color/linea"/>
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="end|top"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="start|center_vertical"
                         android:src="@drawable/valor"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginTop="8dp"></ImageView>
+                        android:layout_marginStart="9dp"
+                        android:layout_marginTop="-3dp"></ImageView>
                 </androidx.cardview.widget.CardView>
                 <TextView
                     android:layout_width="180dp"
@@ -245,13 +291,13 @@
                     android:layout_margin="16dp"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="4dp"
-                    app:cardBackgroundColor="#A4C4FB">
-                <Spinner
-                    android:id="@+id/spinnerModalidad"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Modalidad"
-                    android:layout_margin="7dp"/>
+                    >
+                    <Spinner
+                        android:id="@+id/spinnerModalidad"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Modalidad"
+                        android:layout_margin="7dp"/>
                 </androidx.cardview.widget.CardView>
 
                 <Button
@@ -274,7 +320,7 @@
                     android:layout_marginLeft="65dp"
                     android:layout_below="@id/buttonGuardar"
                     android:layout_marginTop="20dp"
-              />
+                    />
             </LinearLayout>
         </ScrollView>
         <TextView

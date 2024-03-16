@@ -13,5 +13,6 @@
     <color name="blue">#1DADEF</color>
     <color name="not">#E4F5FD</color>
     <color name="perfil">#e6ebff</color>
+    <color name="linea">#CECECE</color>
 
 </resources>

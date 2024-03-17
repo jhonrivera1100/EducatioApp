@@ -1,4 +1,5 @@
 package com.jhon.educatioapp.controllers
+
 import android.os.Bundle
 import android.view.Menu
 import com.google.android.material.snackbar.Snackbar
@@ -13,11 +14,16 @@ import androidx.appcompat.app.AppCompatActivity
 import com.jhon.educatioapp.R
 import com.jhon.educatioapp.databinding.ActivityMainBinding
 import com.jhon.educatioapp.fragments.HomeFragment
+import com.jhon.educatioapp.fragments.MisNotificacionesFragment
+
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    private var isNotificationsFragmentVisible = false
+    private val homeFragment = HomeFragment()
+    private val notificationsFragment = MisNotificacionesFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,13 +34,25 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.appBarMain.toolbar)
 
         binding.appBarMain.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            // Verificar si el fragmento de notificaciones está abierto
+            if (isNotificationsFragmentVisible) {
+                // Cerrar el fragmento de notificaciones
+                supportFragmentManager.popBackStack()
+                isNotificationsFragmentVisible = false
+            } else {
+                // Abrir el fragmento de notificaciones
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.nav_host_fragment_content_main, notificationsFragment)
+                    .addToBackStack(null)
+                    .commit()
+                isNotificationsFragmentVisible = true
+            }
         }
-        val homeFragment = HomeFragment()
+
         supportFragmentManager.beginTransaction()
             .replace(R.id.contenedor_fragment, homeFragment)
             .commit()
+
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)

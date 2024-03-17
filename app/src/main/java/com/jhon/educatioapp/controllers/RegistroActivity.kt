@@ -11,6 +11,7 @@ import com.jhon.educatioapp.apiservice.ApiClient
 import com.jhon.educatioapp.apiservice.ApiManager
 import com.jhon.educatioapp.databinding.ActivityRegistroBinding
 import com.jhon.educatioapp.models.UserData
+import android.content.Context
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -51,12 +52,18 @@ class RegistroActivity : AppCompatActivity() {
             ).show()
             return
         }
-
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, contrasena)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Registro exitoso en Firebase Authentication
                     Log.d(TAG, "Registro exitoso en Firebase Authentication")
+
+                    // Guardar los detalles del usuario en SharedPreferences después de iniciar sesión correctamente
+                    val sharedPreferences = getSharedPreferences("UserData", Context.MODE_PRIVATE)
+                    val editor = sharedPreferences.edit()
+                    editor.putString("email", email)
+                    // Agrega más detalles del usuario si es necesario
+                    editor.apply()
 
                     // Llamamos a la función para insertar datos en el servidor
                     insertarDatos(email, contrasena)

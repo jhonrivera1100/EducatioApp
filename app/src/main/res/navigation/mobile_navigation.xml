@@ -6,7 +6,7 @@
     app:startDestination="@id/Home_Fragment">
 
 
-<!-- Navegacion Usuario -->
+    <!-- Navegacion Usuario -->
     <fragment
         android:id="@+id/Home_Fragment"
         android:name="com.jhon.educatioapp.fragments.HomeFragment"
@@ -40,17 +40,17 @@
         tools:layout="@layout/fragment_perfil_docente" />
     <fragment
         android:id="@+id/postulacion_docente"
-        android:name="com.jhon.educatioapp.fragments.PostulacionDocente"
+        android:name="com.jhon.educatioapp.fragments.PostulacionDocenteFragment"
         android:label="@string/postulacion"
         tools:layout="@layout/fragment_postulacion_docente" />
 
     <!--Navegacion Activitys Login y Registro-->
 
     <activity
-    android:id="@+id/activity_registro"
-    android:name="com.jhon.educatioapp.controllers.RegistroActivity"
-    android:label="@string/registro"
-    tools:layout="@layout/activity_registro" />
+        android:id="@+id/activity_registro"
+        android:name="com.jhon.educatioapp.controllers.RegistroActivity"
+        android:label="@string/registro"
+        tools:layout="@layout/activity_registro" />
 
     <activity
         android:id="@+id/activity_login"

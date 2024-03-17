@@ -2,53 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:orientation="vertical">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewClases"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-    <!-- CardView para mostrar los datos de la clase -->
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:padding="8dp"
-        android:foreground="?android:attr/selectableItemBackground">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textViewIdClase"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ID de la Clase" />
-
-            <TextView
-                android:id="@+id/textViewMateria"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Materia" />
-
-            <TextView
-                android:id="@+id/textViewTema"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tema" />
-
-            <TextView
-                android:id="@+id/textViewFecha"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Fecha" />
-
-            <!-- Agrega más TextView para otros datos si es necesario -->
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

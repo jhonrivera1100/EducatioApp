@@ -27,7 +27,12 @@ class ApiClient {
         val token: String?
     )
 
+    data class DatosAServidorRequest(
+        val token: String,
+        val archivoUrl: String
+    )
+
     data class ResponseApi(
-        val message: ArrayList<String>
+        val message: String
     )
 }

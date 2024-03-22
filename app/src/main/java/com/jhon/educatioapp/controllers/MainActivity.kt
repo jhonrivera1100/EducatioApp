@@ -13,6 +13,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.jhon.educatioapp.R
 import com.jhon.educatioapp.databinding.ActivityMainBinding
+import com.jhon.educatioapp.fragments.Hojavida
 import com.jhon.educatioapp.fragments.HomeFragment
 import com.jhon.educatioapp.fragments.MisNotificacionesFragment
 
@@ -73,6 +74,10 @@ class MainActivity : AppCompatActivity() {
             // Realizar la lógica de cambio de opciones según el ítem del menú seleccionado
             when (menuItem.itemId) {
                 R.id.ser_docente -> {
+                    // Mostrar el Fragment Hojavida
+                    val hojaVidaFragment = Hojavida()
+                    hojaVidaFragment.show(supportFragmentManager, "hojavida_dialog")
+                    true
                     // Cambiar a las opciones del tipo de usuario 1 (docente)
                     // Por ejemplo, navegar a un fragmento específico
                     navController.navigate(R.id.Home_Fragment)

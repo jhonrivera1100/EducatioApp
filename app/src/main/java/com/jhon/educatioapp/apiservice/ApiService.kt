@@ -24,6 +24,13 @@ interface ApiService {
     @POST("login")
     fun login(@Body loginData: LoginData): Call<ApiClient.LoginResponse>
 
+    @POST("hojaVida")
+    fun enviarDatosAlServidor(
+        @Header("Authorization") token: String,
+        @Body datos: ApiClient.DatosAServidorRequest
+    ): Call<ApiClient.ResponseApi>
+
+
     // cambio de rol
     @FormUrlEncoded
     @POST("/usuario/cambiar-rol")

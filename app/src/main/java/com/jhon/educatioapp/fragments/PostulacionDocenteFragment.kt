@@ -1,5 +1,6 @@
 package com.jhon.educatioapp.fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -19,6 +20,8 @@ import com.jhon.educatioapp.models.Clase
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import android.content.Context
+
 
 class PostulacionDocenteFragment : Fragment() {
 
@@ -41,6 +44,11 @@ class PostulacionDocenteFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         obtenerClasesDesdeFirestore() // Llamada para obtener las clases desde Firestore
+
+        val datosUsuario = obtenerDatosUsuarioSharedPreferences(requireContext())
+        if (datosUsuario == null) {
+            Toast.makeText(requireContext(), "Error al obtener datos del usuario", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun setupRecyclerView() {
@@ -145,26 +153,72 @@ class PostulacionDocenteFragment : Fragment() {
         }
     }
 
+    private fun obtenerDatosUsuarioSharedPreferences(context: Context): Pair<String, String>? {
+        val sharedPreferences = context.getSharedPreferences("UserData", Context.MODE_PRIVATE)
+        val nombre = sharedPreferences.getString("nombre", null)
+        val telefono = sharedPreferences.getString("telefono", null)
+
+        return if (nombre != null && telefono != null) {
+            Pair(nombre, telefono)
+        } else {
+            null
+        }
+    }
+
+
     private fun agregarAceptacion(clase: Clase, currentUserEmail: String) {
-        val fechaTimestamp = clase.fecha // Aquí se asume que clase.fecha es una instancia de Date
-        val fechaFirestore = com.google.firebase.Timestamp(fechaTimestamp) // Convertir Date a Timestamp
+        val datosUsuario = obtenerDatosUsuarioSharedPreferences(requireContext())
+        if (datosUsuario == null) {
+            Toast.makeText(requireContext(), "Error al obtener datos del usuario", Toast.LENGTH_SHORT).show()
+            return
+        }
+        val (nombre, telefono) = datosUsuario
+
+        val fechaTimestamp = clase.fecha
+        val fechaFirestore = com.google.firebase.Timestamp(fechaTimestamp)
+        val fechaActual = Date() // Obtener la fecha actual
+
         val postulacionData = hashMapOf(
             "email" to clase.email,
             "materia" to clase.materia,
             "tema" to clase.tema,
-            "fecha" to fechaFirestore, // Guardar la fecha como Timestamp en Firestore
+            "fecha" to fechaFirestore,
             "horainicio" to clase.horaInicio,
             "horafin" to clase.horaFin,
             "modalidad" to clase.modalidad,
             "valorClase" to clase.valorClase,
-            "aceptaciones" to listOf(currentUserEmail)
+            "aceptaciones" to listOf(
+                hashMapOf(
+                    "correo" to currentUserEmail,
+                    "nombre" to nombre,
+                    "telefono" to telefono,
+                    "fechaPostulacion" to fechaActual // Agregar la fecha actual como "fechaPostulacion"
+                )
+            )
         )
 
         db.collection("postulaciones")
             .add(postulacionData)
             .addOnSuccessListener { documentReference ->
                 Log.d(TAG, "Documento agregado con ID: ${documentReference.id}")
-                Toast.makeText(requireContext(), "Aceptación guardada exitosamente", Toast.LENGTH_SHORT).show()
+                // Crear un AlertDialog personalizado
+                val builder = AlertDialog.Builder(requireContext())
+                val inflater = requireActivity().layoutInflater
+                val dialogView = inflater.inflate(R.layout.popup_postular, null)
+
+// Configurar el AlertDialog con el diseño personalizado
+                builder.setView(dialogView)
+                val dialog = builder.create()
+
+// Manejar el clic del botón OK
+                dialogView.findViewById<Button>(R.id.buttonOK).setOnClickListener {
+                    // Cerrar el cuadro de diálogo
+                    dialog.dismiss()
+                }
+
+// Mostrar el AlertDialog
+                dialog.show()
+
             }
             .addOnFailureListener { e ->
                 Log.e(TAG, "Error al agregar la aceptación", e)

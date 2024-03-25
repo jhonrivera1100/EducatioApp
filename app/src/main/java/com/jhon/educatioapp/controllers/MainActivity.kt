@@ -35,18 +35,18 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.appBarMain.toolbar)
 
         binding.appBarMain.fab.setOnClickListener { view ->
-            // Verificar si el fragmento de notificaciones está abierto
-            if (isNotificationsFragmentVisible) {
+            val fragmentManager = supportFragmentManager
+            val currentFragment = fragmentManager.findFragmentById(R.id.nav_host_fragment_content_main)
+
+            if (currentFragment != null && currentFragment is MisNotificacionesFragment) {
                 // Cerrar el fragmento de notificaciones
-                supportFragmentManager.popBackStack()
-                isNotificationsFragmentVisible = false
+                fragmentManager.beginTransaction().remove(currentFragment).commit()
             } else {
                 // Abrir el fragmento de notificaciones
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.nav_host_fragment_content_main, notificationsFragment)
-                    .addToBackStack(null)
-                    .commit()
-                isNotificationsFragmentVisible = true
+                val fragmentTransaction = fragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.nav_host_fragment_content_main, notificationsFragment)
+                fragmentTransaction.addToBackStack(null)
+                fragmentTransaction.commit()
             }
         }
 

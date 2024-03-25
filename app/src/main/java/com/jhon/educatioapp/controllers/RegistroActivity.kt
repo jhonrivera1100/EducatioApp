@@ -41,6 +41,8 @@ class RegistroActivity : AppCompatActivity() {
         val email = binding.email.text.toString()
         val contrasena = binding.contrasena.text.toString()
         val confirmarContrasena = binding.confirmarContrasena.text.toString()
+        val name = binding.name.text.toString()
+        val telefono = binding.telefono.text.toString()
 
         // Validación de confirmación de contraseña
         if (contrasena != confirmarContrasena) {
@@ -62,7 +64,8 @@ class RegistroActivity : AppCompatActivity() {
                     val sharedPreferences = getSharedPreferences("UserData", Context.MODE_PRIVATE)
                     val editor = sharedPreferences.edit()
                     editor.putString("email", email)
-                    // Agrega más detalles del usuario si es necesario
+                    editor.putString("nombre", name)
+                    editor.putString("telefono", telefono)
                     editor.apply()
 
                     // Llamamos a la función para insertar datos en el servidor

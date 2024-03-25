@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".fragments.SolicitarFragment">
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="337dp"
         android:layout_height="600dp"
         android:background="@drawable/rounded"
         android:elevation="8dp"
-        android:id="@+id/relativeLayout"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.272"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.656">
+        app:layout_constraintVertical_bias="0.32">
 
         <ScrollView
 
@@ -34,15 +34,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="serif"
                     android:text="Correo electronico:"
                     android:textColor="@color/Azul"
-                    android:layout_marginStart="16dp"
                     android:textSize="16sp"
-                    android:fontFamily="serif"
-                    android:textStyle="bold" >
+                    android:textStyle="bold">
 
                 </TextView>
 
@@ -52,14 +53,14 @@
                     android:layout_height="50dp"
                     android:layout_margin="16dp"
                     app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp"
-                    >
+                    app:cardElevation="4dp">
+
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="start|center_vertical"
-                        android:src="@drawable/correo"
                         android:layout_marginStart="8dp"
+                        android:src="@drawable/correo"
 
                         />
 
@@ -67,11 +68,10 @@
                         android:id="@+id/editTextEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Correo electrónico"
-                        android:inputType="textEmailAddress"
                         android:layout_marginStart="39dp"
                         android:layout_marginTop="13dp"
-                        ></TextView>
+                        android:hint="Correo electrónico"
+                        android:inputType="textEmailAddress"></TextView>
 
 
                 </androidx.cardview.widget.CardView>
@@ -80,12 +80,12 @@
                 <TextView
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="serif"
                     android:text="Materia:"
                     android:textColor="@color/Azul"
-                    android:layout_marginStart="16dp"
                     android:textSize="16sp"
-                    android:fontFamily="serif"
-                    android:textStyle="bold" >
+                    android:textStyle="bold">
 
                 </TextView>
 
@@ -108,12 +108,12 @@
                 <TextView
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="serif"
                     android:text="Tema:"
                     android:textColor="@color/Azul"
-                    android:layout_marginStart="16dp"
                     android:textSize="16sp"
-                    android:fontFamily="serif"
-                    android:textStyle="bold" >
+                    android:textStyle="bold">
 
                 </TextView>
 
@@ -122,23 +122,24 @@
                     android:layout_height="50dp"
                     android:layout_margin="16dp"
                     app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp"
-                    >
+                    app:cardElevation="4dp">
+
                     <EditText
                         android:id="@+id/editTextTema"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Tema"
-                        android:inputType="text"
                         android:layout_marginStart="32dp"
-                        android:backgroundTint="@color/linea"/>
+                        android:backgroundTint="@color/linea"
+                        android:hint="Tema"
+                        android:inputType="text" />
+
                     <ImageView
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_gravity="start|center_vertical"
-                        android:src="@drawable/tema"
                         android:layout_marginStart="9dp"
                         android:layout_marginTop="-3dp"
+                        android:src="@drawable/tema"
 
                         ></ImageView>
                 </androidx.cardview.widget.CardView>
@@ -146,183 +147,192 @@
                 <TextView
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="serif"
                     android:text="Fecha:"
                     android:textColor="@color/Azul"
-                    android:layout_marginStart="16dp"
                     android:textSize="16sp"
-                    android:fontFamily="serif"
-                    android:textStyle="bold" >
+                    android:textStyle="bold">
 
                 </TextView>
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="310dp"
                     android:layout_margin="16dp"
                     app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp"
-                    >
+                    app:cardElevation="4dp">
 
                     <DatePicker
                         android:id="@+id/datePickerFecha"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:scaleX="0.8"
-                        android:scaleY="0.8"/>
+                        android:scaleY="0.8" />
 
                 </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="serif"
                     android:text="Hora inicio:"
                     android:textColor="@color/Azul"
-                    android:layout_marginStart="16dp"
                     android:textSize="16sp"
-                    android:fontFamily="serif"
-                    android:textStyle="bold" >
+                    android:textStyle="bold">
 
                 </TextView>
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_margin="16dp"
                     app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp"
-                    >
+                    app:cardElevation="4dp">
+
                     <EditText
                         android:id="@+id/editTextHora"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Hora inicio"
-                        android:inputType="time"
                         android:layout_marginStart="32dp"
-                        android:backgroundTint="@color/linea"/>
+                        android:backgroundTint="@color/linea"
+                        android:hint="Hora inicio"
+                        android:inputType="time" />
+
                     <ImageView
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_gravity="start|center_vertical"
-                        android:src="@drawable/reloj"
                         android:layout_marginStart="9dp"
-                        android:layout_marginTop="-3dp"></ImageView>
+                        android:layout_marginTop="-3dp"
+                        android:src="@drawable/reloj"></ImageView>
                 </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="serif"
                     android:text="Hora Fin:"
                     android:textColor="@color/Azul"
-                    android:layout_marginStart="16dp"
                     android:textSize="16sp"
-                    android:fontFamily="serif"
-                    android:textStyle="bold" >
+                    android:textStyle="bold">
 
                 </TextView>
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_margin="16dp"
                     app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp"
-                    >
+                    app:cardElevation="4dp">
+
                     <EditText
                         android:id="@+id/editTextHorafin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Hora Fin"
-                        android:inputType="time"
                         android:layout_marginStart="32dp"
-                        android:backgroundTint="@color/linea"/>
+                        android:backgroundTint="@color/linea"
+                        android:hint="Hora Fin"
+                        android:inputType="time" />
+
                     <ImageView
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_gravity="start|center_vertical"
-                        android:src="@drawable/reloj"
                         android:layout_marginStart="9dp"
-                        android:layout_marginTop="-3dp"></ImageView>
+                        android:layout_marginTop="-3dp"
+                        android:src="@drawable/reloj"></ImageView>
                 </androidx.cardview.widget.CardView>
+
                 <TextView
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="serif"
                     android:text="Valor de la Clase:"
                     android:textColor="@color/Azul"
-                    android:layout_marginStart="16dp"
                     android:textSize="16sp"
-                    android:fontFamily="serif"
-                    android:textStyle="bold" >
+                    android:textStyle="bold">
 
                 </TextView>
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_margin="16dp"
                     app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp"
-                    >
+                    app:cardElevation="4dp">
+
                     <EditText
                         android:id="@+id/editTextValorClase"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Valor "
-                        android:inputType="number"
                         android:layout_marginStart="32dp"
-                        android:backgroundTint="@color/linea"/>
+                        android:backgroundTint="@color/linea"
+                        android:hint="Valor "
+                        android:inputType="number" />
+
                     <ImageView
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_gravity="start|center_vertical"
-                        android:src="@drawable/valor"
                         android:layout_marginStart="9dp"
-                        android:layout_marginTop="-3dp"></ImageView>
+                        android:layout_marginTop="-3dp"
+                        android:src="@drawable/valor"></ImageView>
                 </androidx.cardview.widget.CardView>
+
                 <TextView
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="serif"
                     android:text="Modalidad :"
                     android:textColor="@color/Azul"
-                    android:layout_marginStart="16dp"
                     android:textSize="16sp"
-                    android:fontFamily="serif"
-                    android:textStyle="bold" >
+                    android:textStyle="bold">
 
                 </TextView>
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_margin="16dp"
                     app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp"
-                    >
+                    app:cardElevation="4dp">
+
                     <Spinner
                         android:id="@+id/spinnerModalidad"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Modalidad"
-                        android:layout_margin="7dp"/>
+                        android:layout_margin="7dp"
+                        android:hint="Modalidad" />
                 </androidx.cardview.widget.CardView>
 
                 <Button
                     android:id="@+id/buttonGuardar"
                     android:layout_width="200dp"
                     android:layout_height="40dp"
-                    android:text="Guardar"
-                    android:layout_marginLeft="65dp"
                     android:layout_centerInParent="true"
+                    android:layout_marginLeft="65dp"
                     android:layout_marginTop="50dp"
-                    android:backgroundTint="@color/principal"/>
+                    android:backgroundTint="@color/principal"
+                    android:text="Guardar" />
 
                 <Button
                     android:id="@+id/buttonActualizar"
                     android:layout_width="200dp"
                     android:layout_height="40dp"
-                    android:backgroundTint="@color/principal"
-                    android:text="Actualizar"
+                    android:layout_below="@id/buttonGuardar"
                     android:layout_centerInParent="true"
                     android:layout_marginLeft="65dp"
-                    android:layout_below="@id/buttonGuardar"
                     android:layout_marginTop="20dp"
-                    />
+                    android:backgroundTint="@color/principal"
+                    android:text="Actualizar" />
             </LinearLayout>
         </ScrollView>
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="399dp"

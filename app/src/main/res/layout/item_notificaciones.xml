@@ -69,6 +69,22 @@
                             android:text="Correo: juanito@gmail.com"
                             android:textColor="@android:color/black" />
 
+                        <TextView
+                            android:id="@+id/textViewName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="Nombre: juanito"
+                            android:textColor="@android:color/black" />
+
+                        <TextView
+                            android:id="@+id/textViewTelephone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="Telefono: 0000000000"
+                            android:textColor="@android:color/black" />
+
 
                         <LinearLayout
                             android:layout_width="match_parent"

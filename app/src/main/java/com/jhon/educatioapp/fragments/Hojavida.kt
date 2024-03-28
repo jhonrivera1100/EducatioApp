@@ -1,5 +1,6 @@
 package com.jhon.educatioapp.fragments
 
+import VerificacionHojaFragment
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -68,6 +69,8 @@ class Hojavida : DialogFragment() {
                                 override fun onResponse(call: Call<ApiClient.ResponseApi>, response: Response<ApiClient.ResponseApi>) {
                                     if (response.isSuccessful) {
                                         Log.d("Hojavida", "URL del archivo enviada al servidor correctamente")
+                                        val dialog = VerificacionHojaFragment()
+                                        dialog.show(requireActivity().supportFragmentManager, "VerificacionHojaFragment")
                                     } else {
                                         Log.e("Hojavida", "Error al enviar la URL del archivo al servidor: ${response.message()}")
                                     }
